@@ -1,0 +1,21 @@
+{
+    "name": "souhaiebtar/php-cli-demo",
+    "type": "library",
+    "license": "MIT",
+    "version": "0.0.1",
+    "autoload": {
+        "psr-4": {
+            "Souhaiebtar\\PhpCliDemo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "souhaiebtar",
+            "email": "tarhounisouhaieb@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "symfony/console": "^6.4"
+    }
+}
