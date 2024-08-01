@@ -2,10 +2,10 @@
 
 namespace Souhaiebtar\PhpCliDemo\Commands;
 
+use Souhaiebtar\PhpCliDemo\Services\InputOutput;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 class Play extends Command
 {
@@ -22,8 +22,7 @@ class Play extends Command
      * @var string
      */
     protected static $defaultDescription = 'Play the game!';
-    
-    
+
     /**
      * Execute the command
      *
@@ -37,14 +36,14 @@ class Play extends Command
         $term2 = rand(1, 10);
         $result = $term1 + $term2;
 
-        $io = new SymfonyStyle($input, $output);
+        $io = new InputOutput($input, $output);
 
-        $answer = (int) $io->ask(sprintf('What is %s + %s?', $term1, $term2));
+        $answer = (int) $io->question(sprintf('What is %s + %s?', $term1, $term2));
 
         if ($answer === $result) {
-            $io->success('Well done!');
+            $io->right('Well done!');
         } else {
-            $io->error(sprintf('Aww, so close. The answer was %s', $result));
+            $io->wrong(sprintf('Aww, so close. The answer was %s', $result));
         }
 
         if ($io->confirm('Play again?')) {
